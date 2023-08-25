@@ -54,7 +54,7 @@ WHERE item_count > (SELECT AVG(item_count) FROM OrderAverage);  -- Only item cou
 
 -- 5. Find the products that have been sold the most, excluding products in the "Clearance" category. List the product names and the total quantity sold for each product.
 WITH ProductSales AS (
-    SELECT p.product_name, SUM(oi.quantity) AS total_quantity   -- Combine quantity of all products sold
+    SELECT p.product_name, SUM(oi.quantity) AS total_quantity   -- Name of each product and the total number of times it's been sold
     FROM Products p                                             -- Check Products, alias Products
     JOIN Order_Items oi ON p.product_id = oi.product_id         -- Connect p and oi by IDs, alias oi
     JOIN Categories c ON p.category_id = c.category_id          -- Connect p and c by IDs, alias c
